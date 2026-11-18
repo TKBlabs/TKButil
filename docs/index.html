@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKButil — TKB Labs</title>
+<meta name="description" content="TKButilはmacOS用の総合ユーティリティアプリです。クリップボード履歴、定型文、Dock移動抑止、マウス調整、サウンド優先度制御を1つに集約。">
+<link rel="canonical" href="https://apps.tkbtk.com/TKButil/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apps.tkbtk.com/TKButil/">
+<meta property="og:site_name" content="TKB Labs">
+<meta property="og:title" content="TKButil — TKB Labs">
+<meta property="og:description" content="TKButilはmacOS用の総合ユーティリティアプリです。クリップボード履歴、定型文、Dock移動抑止、マウス調整、サウンド優先度制御を1つに集約。">
+<meta property="og:image" content="https://apps.tkbtk.com/assets/screenshots/tkbutil.png">
+<meta property="og:image:width" content="773">
+<meta property="og:image:height" content="1506">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TKButil — TKB Labs">
+<meta name="twitter:description" content="TKButilはmacOS用の総合ユーティリティアプリです。クリップボード履歴、定型文、Dock移動抑止、マウス調整、サウンド優先度制御を1つに集約。">
+<meta name="twitter:image" content="https://apps.tkbtk.com/assets/screenshots/tkbutil.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TKButil",
+  "url": "https://apps.tkbtk.com/TKButil/",
+  "description": "TKButilはmacOS用の総合ユーティリティアプリです。クリップボード履歴、定型文、Dock移動抑止、マウス調整、サウンド優先度制御を1つに集約。",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "macOS Tahoe 26.5以降",
+  "softwareVersion": "1.0.26",
+  "downloadUrl": "https://github.com/TKBlabs/TKButil/releases",
+  "image": "https://apps.tkbtk.com/assets/screenshots/tkbutil.png",
+  "author": { "@type": "Organization", "name": "TKB Labs", "url": "https://tkbtk.com/" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+}
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2T42LFKKTJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T42LFKKTJ');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400;500;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css?v=267b1ce4">
+<style>
+/* =========================================================
+   TKB Labs — shared design system
+   Motif: real macOS window chrome (traffic lights / titlebars)
+   as the one signature element, reused everywhere.
+   ========================================================= */
+
+:root{
+  /* --- color tokens --- */
+  --bg:        #16171b;
+  --bg-alt:    #1b1d22;
+  --surface:   #212328;
+  --surface-2: #26282e;
+  --titlebar:  #2b2d33;
+  --border:    #34363d;
+  --border-soft: #2a2c32;
+
+  --text:       #e9e7e2;
+  --text-dim:   #999da7;
+  --text-faint: #64676f;
+
+  /* app / accent identity colors (drawn from a syntax-highlight palette) */
+  --amber: #f0c05a;   /* TKBshot  — capture / flash   */
+  --teal:  #5fd3c4;   /* TKBcal   — calendar / type    */
+  --pink:  #ff6f9c;   /* TKButil  — keyword / utility  */
+  --blue:  #7bb0ff;   /* links / neutral accent        */
+
+  --ok:    #6fd08c;
+  --warn:  #f0c05a;
+  --fix:   #ff8a80;
+
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+
+  --shadow-window: 0 1px 0 rgba(255,255,255,0.03) inset, 0 20px 50px -20px rgba(0,0,0,0.6);
+
+  --font-display: 'M PLUS 1 Code', 'JetBrains Mono', monospace;
+  --font-body: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+h1.headline{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+
+.hero-sub{
+  margin-top: 24px;
+  max-width: 46ch;
+  color: var(--text-dim);
+  font-size: 16.5px;
+}
+
+.app-hero-icon{
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: #14151a;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.app-hero-icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.download-note{
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(240,192,90,0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(240,192,90,0.08);
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.download-note strong{ color: var(--text); }
+
+.screen-mock img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+}
+
+/* final polish */
+body{
+  background:
+    radial-gradient(circle at 15% 4%, rgba(255,111,156,.08), transparent 28rem),
+    radial-gradient(circle at 88% 26%, rgba(123,176,255,.05), transparent 24rem),
+    var(--bg);
+}
+
+.menubar-brand, .btn{ -webkit-tap-highlight-color: transparent; }
+
+.feature{ transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+
+.feature:hover{ transform: translateY(-3px); border-color: #454851; background: var(--surface); }
+
+.btn-primary{ box-shadow: 0 10px 28px -14px var(--pink); }
+
+@media (max-width: 640px){
+  .wrap, .menubar-inner{ padding-left: 20px; padding-right: 20px; }
+  .menubar-nav{ gap: 14px; }
+  .menubar-nav a:not(.pill){ display: none; }
+  section{ padding: 52px 0; }
+  .section-head{ margin-bottom: 24px; }
+  .app-hero{ padding-bottom: 48px; }
+  .btn{ width: 100%; justify-content: center; }
+  .cta-row{ align-items: stretch !important; }
+  .spec-row{ gap: 18px; }
+  .spec-row span:last-child{ text-align: right; }
+}
+</style>
+</head>
+<body>
+
+  <header class="menubar">
+    <div class="menubar-inner">
+      <a href="https://tkbtk.com/" class="menubar-brand" style="text-decoration:none;">
+        <span class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+        TKB Labs
+      </a>
+      <nav class="menubar-nav" aria-label="メインナビゲーション">
+        <a href="../#apps">Apps</a>
+        <a href="#readme">README</a>
+        <a href="#" class="pill" data-email-link>Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <a href="../#apps" class="back-link" style="margin-top:28px;">← すべてのアプリ</a>
+
+    <section class="app-hero" style="padding-top:0;">
+      <div>
+        <div class="app-hero-icon"><img src="../assets/icons/tkbutil-192.webp" width="64" height="64" alt="TKButil icon"></div>
+        <h1>TKButil</h1>
+        <p class="tagline">クリップボード運用を中心に、入力・表示・デバイス周りの調整をまとめた実務向けツールボックス。</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" style="background:var(--pink); color:#16171b;" href="https://github.com/TKBlabs/TKButil/releases">↓ ダウンロード</a>
+          <a class="btn btn-ghost" href="#readme">README を見る</a>
+        </div>
+        <p class="download-note"><strong>Appleの公証（Notarization）を受けています。</strong><br>DMGを開いてTKButil.appを<code>/アプリケーション</code>へドラッグすれば、そのまま起動できます。</p>
+        <div class="spec-list">
+          <span><b>対応OS</b> macOS Tahoe 26.5以降</span>
+          <span><b>チップ</b> Apple Silicon</span>
+          <span><b>配布形式</b> DMG</span>
+        </div>
+      </div>
+
+      <div class="window">
+        <div class="window-titlebar">
+          <span class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+          <span class="title">TKButil — ツールボックス</span>
+        </div>
+        <div class="screen-mock" style="background:var(--bg-alt);">
+          <img src="../assets/screenshots/tkbutil-773.webp" width="773" height="1506" alt="TKButil screenshot">
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 class="section-title">概要</h2>
+        <span class="section-tag">// overview</span>
+      </div>
+      <div class="overview">
+        <div class="overview-text">
+          <p>
+            TKButilは、メニューバー常駐で運用する総合ユーティリティです。
+            中核はクリップボード履歴で、テキスト・URL・画像を検索しながら呼び戻せます。
+          </p>
+          <p>
+            さらに定型文管理、ウィンドウ切り替え、Dock移動抑止、マウス調整、アプリ起動位置指定、サウンド出力優先制御を統合。
+            それぞれを個別にオン/オフし、必要な機能だけを有効化できる構成です。
+          </p>
+        </div>
+        <div class="spec-card">
+          <h4>Specifications</h4>
+          <div class="spec-row"><span>対応OS</span><span>macOS Tahoe 26.5以降</span></div>
+          <div class="spec-row"><span>対応チップ</span><span>Apple Silicon</span></div>
+          <div class="spec-row"><span>言語</span><span>日本語</span></div>
+          <div class="spec-row"><span>配布形式</span><span>DMG</span></div>
+          <div class="spec-row"><span>ライセンス</span><span>Freeware</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 class="section-title">主な機能</h2>
+        <span class="section-tag">// features</span>
+      </div>
+      <div class="feature-grid">
+        <div class="feature reveal">
+          <div class="feature-icon" style="background:var(--pink); color:#16171b;">⧉</div>
+          <h3>クリップボード履歴と定型文入力</h3>
+          <p>テキスト・URL・画像を分類保持し、行数や保持件数を調整しながら高速に再利用できます。定型文の登録と入力にも対応しています。</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon" style="background:var(--pink); color:#16171b;">⌨</div>
+          <h3>ショートカット起動メニュー</h3>
+          <p>キー組み合わせや修飾キー連打で履歴と定型文メニューを表示。キーボード操作中心の運用が可能です。</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon" style="background:var(--pink); color:#16171b;">✎</div>
+          <h3>アプリケーション起動位置固定</h3>
+          <p>アプリケーション起動時に毎回ウィンドウ位置がバラバラになるイライラを解消。指定したモニタ環境下で毎回指定位置に配置します。</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon" style="background:var(--pink); color:#16171b;">▣</div>
+          <h3>Dock移動抑止</h3>
+          <p>複数ディスプレイ環境で、非メイン画面のエッジ誤接触によるDock移動を防止します。</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon" style="background:var(--pink); color:#16171b;">◐</div>
+          <h3>マウス調整</h3>
+          <p>デバイス選択、スクロール速度、カーソル速度・加速、反転動作を調整し、競合検知も行います。</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon" style="background:var(--pink); color:#16171b;">♫</div>
+          <h3>サウンド優先度制御</h3>
+          <p>出力デバイスの優先順位を設定し、接続状態を監視しながら望む出力先へ自動で切り替えます。</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="readme">
+      <div class="section-head">
+        <h2 class="section-title">README</h2>
+        <span class="section-tag">// cat README.md</span>
+      </div>
+      <div class="terminal">
+        <div class="window-titlebar">
+          <span class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+          <span class="title">README.md — TKButil</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="prompt">$</span> cat <span class="path">README.md</span></p>
+
+          <h4># TKButil</h4>
+          <pre>日々の細かい作業を助ける機能を1つに集約した、macOS用の総合ユーティリティアプリです。</pre>
+
+          <h4>## インストール</h4>
+          <ul>
+            <li>DMGを開き、TKButil.app を「アプリケーション」フォルダへドラッグします</li>
+            <li>Appleの公証（Notarization）済みのため、そのままダブルクリックで起動できます</li>
+            <li>自動貼り付け・ウィンドウ固定・ウィンドウ切り替え・マウス調整を使う場合は、アクセシビリティなどの許可を求められます</li>
+          </ul>
+
+          <h4>## アップデート</h4>
+          <ul>
+            <li>24時間ごとに自動で更新を確認し、新しい版があればお知らせします</li>
+            <li>メニューバーアイコンの右クリックメニュー「アップデートを確認...」から手動でも確認できます</li>
+            <li>自動確認の有無は 設定 → 更新 で切り替えられます</li>
+          </ul>
+
+          <h4>## 動作環境</h4>
+          <ul>
+            <li>macOS Tahoe 26.5以降</li>
+            <li>Apple Silicon 搭載Mac（Intel Mac非対応）</li>
+          </ul>
+
+          <h4>## 主な機能</h4>
+          <ul>
+            <li>クリップボード履歴（テキスト・URL・画像）と定型文</li>
+            <li>アプリごとのウィンドウを個別に選べるウィンドウ切り替え（⌘Tab にも割り当て可）</li>
+            <li>モニタ構成ごとのウィンドウ位置固定、複数ディスプレイでのDock移動抑止</li>
+            <li>マウスごとのスクロール・カーソル調整、サウンド出力先の優先度制御</li>
+          </ul>
+
+          <h4>## ライセンス</h4>
+          <pre>Freeware — 個人・商用問わず無料でご利用いただけます。</pre>
+
+          <h4>## 詳細ドキュメント</h4>
+          <pre>各機能の詳細な説明はこちら：
+<a href="https://github.com/TKBlabs/TKButil#readme" target="_blank" rel="noopener" class="path">https://github.com/TKBlabs/TKButil</a></pre>
+
+          <h4>## フィードバック</h4>
+          <pre>不具合報告・機能要望は、ページ上部の「Contact」からお送りください。
+個人開発のため、すべてのご連絡への返信や、いただいた要望の実装を保証するものではありません。</pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 TKB Labs — built on macOS, for macOS.</span>
+      <div class="footer-links">
+        <a href="../#apps">Apps</a>
+        <a href="#" data-email-link>Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../contact.js"></script>
+  <script>
+// Minimal scroll-reveal — no libraries, respects reduced motion.
+(function () {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targets = document.querySelectorAll('.reveal');
+
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    targets.forEach((el) => el.classList.add('in'));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  targets.forEach((el) => io.observe(el));
+})();
+
+  </script>
+</body>
+</html>
