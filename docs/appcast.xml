@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>TKButil</title>
+        <item>
+            <title>1.0.26</title>
+            <pubDate>Wed, 18 Nov 2026 14:50:21 +0900</pubDate>
+            <link>https://apps.tkbtk.com/TKButil/</link>
+            <sparkle:version>26</sparkle:version>
+            <sparkle:shortVersionString>1.0.26</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.5</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<style>body{font-family:-apple-system,sans-serif;font-size:13px;line-height:1.7;margin:0;padding:4px}h3{font-size:13px;margin:0.8em 0 0.2em}h3:first-child{margin-top:0}ul{padding-left:1.2em;margin:0.2em 0}</style>
+</head><body>
+<h3>追加</h3>
+<ul><li>マウス設定を接続中のマウスごとに一覧で表示し、ホイール・スクロール反転・カーソル速度・加速度をマウスごとに設定できるようにしました</li><li>マウスごとの設定を保存し、接続が外れても次回接続したときに自動で反映するようにしました</li><li>「アプリケーション」フォルダ以外から起動したときに、移動して起動し直すかを確認するようにしました（自動アップデートを確実に動かすため）</li></ul>
+<h3>変更</h3>
+<ul><li>マウス設定画面をコンパクトにまとめ、カーソルの移動速度と加速度を1行に並べました</li><li>スクロールの「反転」は、チェックを入れるとWindowsと同じ向きになるようにしました</li></ul>
+</body></html>
+]]></description>
+            <enclosure url="https://github.com/TKBlabs/TKButil/releases/download/v1.0.26/TKButil_1.0.26.dmg" length="5413191" type="application/octet-stream" sparkle:edSignature="8r16RFvqfNgyvZFBcyGDHwlzFfCHufoYzKw3mOfZ/7feL93UPVb6N/quWr3R20/Lwygqmh4llQjSIfQIIctAAQ=="/>
+        </item>
+    </channel>
+</rss>
