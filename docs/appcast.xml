@@ -3,6 +3,25 @@
     <channel>
         <title>TKButil</title>
         <item>
+            <title>1.0.27</title>
+            <pubDate>Wed, 18 Nov 2026 15:01:28 +0900</pubDate>
+            <link>https://apps.tkbtk.com/TKButil/</link>
+            <sparkle:version>27</sparkle:version>
+            <sparkle:shortVersionString>1.0.27</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.5</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<style>body{font-family:-apple-system,sans-serif;font-size:13px;line-height:1.7;margin:0;padding:4px}h3{font-size:13px;margin:0.8em 0 0.2em}h3:first-child{margin-top:0}ul{padding-left:1.2em;margin:0.2em 0}</style>
+</head><body>
+<h3>変更</h3>
+<ul><li>新しく接続したマウスの初期設定を「スクロール加速なし」（Windowsと同じく1ノッチごとに一定量）にしました</li><li>スクロール加速をオンにしてホイールの量を上げたとき、速く回したときに進みすぎないようにしました</li></ul>
+<h3>修正</h3>
+<ul><li>TKButilを終了したときなどに、マウスのスクロール量が本来の約10分の1まで落ちてしまう問題を修正しました</li><li>USBレシーバーが同じポートで付き直したときに、マウスごとの設定が反映されず既定の速さのままになる問題を修正しました</li><li>マウス入力も持つキーパッドやキーボードが、マウスの一覧に表示されてしまう問題を修正しました</li></ul>
+</body></html>
+]]></description>
+            <enclosure url="https://github.com/TKBlabs/TKButil/releases/download/v1.0.27/TKButil_1.0.27.dmg" length="6469771" type="application/octet-stream" sparkle:edSignature="O99beJf4gnhji5LDRmVxeSSoYZx+DqowEDcFWwZfd2D/Zoh67pH5b5fFwcsRfG6b+pRhPkMlPc18AwFkr/89Bw=="/>
+        </item>
+        <item>
             <title>1.0.26</title>
             <pubDate>Wed, 18 Nov 2026 14:50:21 +0900</pubDate>
             <link>https://apps.tkbtk.com/TKButil/</link>
