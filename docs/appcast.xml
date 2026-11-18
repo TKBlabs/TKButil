@@ -3,6 +3,23 @@
     <channel>
         <title>TKButil</title>
         <item>
+            <title>1.1.0</title>
+            <pubDate>Wed, 18 Nov 2026 15:29:06 +0900</pubDate>
+            <link>https://apps.tkbtk.com/TKButil/</link>
+            <sparkle:version>28</sparkle:version>
+            <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.5</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<style>body{font-family:-apple-system,sans-serif;font-size:13px;line-height:1.7;margin:0;padding:4px}h3{font-size:13px;margin:0.8em 0 0.2em}h3:first-child{margin-top:0}ul{padding-left:1.2em;margin:0.2em 0}</style>
+</head><body>
+<h3>変更</h3>
+<ul><li>配布形式をZIPからDMGに変更しました。DMGを開いて、TKButil.appを「アプリケーション」フォルダへドラッグしてください。</li><li>配布元をGitHub（github.com/TKBlabs/TKButil）に移し、製品ページを apps.tkbtk.com に移しました。自動アップデートはこれまでどおり使えます。</li><li>アップデートの確認画面などを日本語で表示するようにしました。</li></ul>
+</body></html>
+]]></description>
+            <enclosure url="https://github.com/TKBlabs/TKButil/releases/download/v1.1.0/TKButil_1.1.0.dmg" length="6471636" type="application/octet-stream" sparkle:edSignature="P+bztlZyMMNjP+6EktefdEi0tzO6SQ15C2s5NIHD+twGM+YPRPjKRuWooOuxvwFGxMWCEKACZDF2HFL0VMdBCw=="/>
+        </item>
+        <item>
             <title>1.0.27</title>
             <pubDate>Wed, 18 Nov 2026 15:01:28 +0900</pubDate>
             <link>https://apps.tkbtk.com/TKButil/</link>
